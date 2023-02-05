@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './dropdownExpenseCategories.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,11 @@ class ExpenseList extends StatefulWidget {
 
 class _ExpenseListState extends State<ExpenseList> {
   final expenses = <Expense>[];
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final myControllerName = TextEditingController();
+  final myControllerCost = TextEditingController();
+  String _selectedCategory = "";
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +57,15 @@ class _ExpenseListState extends State<ExpenseList> {
                 title: Text('Add Expense'),
                 content: Column(
                   children: [
-                    TextField(
-                      decoration: InputDecoration(labelText: 'Name'),
-                    ),
+                    DropdownButtonExample(
+                      onChangedDDL: (value) {
+                        _selectedCategory = value;
+                      }
+                     ),
                     TextField(
                       decoration: InputDecoration(labelText: 'Cost'),
                       keyboardType: TextInputType.number,
+                      controller: myControllerCost,
                     ),
                   ],
                 ),
@@ -71,7 +80,7 @@ class _ExpenseListState extends State<ExpenseList> {
                     child: Text('Add'),
                     onPressed: () {
                       // Code to add the expense to the expenses list
-                      setState(() {expenses.add(Expense());});
+                      setState(() {expenses.add(Expense(name: _selectedCategory, cost: double.parse(myControllerCost.text)));});
                       Navigator.of(context).pop();
                     },
                   ),
@@ -90,7 +99,7 @@ class Expense {
   final double cost;
 
   Expense({
-    this.name="action",
-    this.cost=0,
+    required this.name,
+    required this.cost,
   });
 }
