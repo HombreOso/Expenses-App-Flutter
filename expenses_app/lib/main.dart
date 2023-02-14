@@ -24,7 +24,7 @@ class _ExpenseListState extends State<ExpenseList> {
   // of the TextField.
   final myControllerName = TextEditingController();
   final myControllerCost = TextEditingController();
-  String _selectedCategory = "";
+  String _selectedCategory = "Food";
 
   @override
   Widget build(BuildContext context) {

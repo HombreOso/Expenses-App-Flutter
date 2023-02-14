@@ -30,7 +30,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
       value: dropdownValue,
       icon: const Icon(Icons.arrow_downward),
       elevation: 16,
-      style: const TextStyle(color: Colors.blue),
+      style: const TextStyle(color: Color.fromARGB(255, 12, 113, 195)),
       onChanged: (String? value) {
         // This is called when the user selects an item.
         setState(() {
