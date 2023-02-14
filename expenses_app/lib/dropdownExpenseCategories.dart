@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DropdownButtonExample extends StatefulWidget {
 
-  Function(String) onChangedDDL;
+  final Function(String) onChangedDDL;
 
   DropdownButtonExample({
     super.key,
